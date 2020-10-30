@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.VueRouter = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   /*  */
 
@@ -225,7 +225,8 @@
       return (
         a.path.replace(trailingSlashRE, '') === b.path.replace(trailingSlashRE, '') &&
         a.hash === b.hash &&
-        isObjectEqual(a.query, b.query)
+        isObjectEqual(a.query, b.query) &&
+        isObjectEqual(a.params, b.params)
       )
     } else if (a.name && b.name) {
       return (
@@ -3071,4 +3072,4 @@
 
   return VueRouter;
 
-}));
+})));
